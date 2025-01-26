@@ -30,7 +30,7 @@ const MovieReviews = () => {
   return (
     <>
       <ul>
-        {movieReviews
+        {movieReviews.length
           ? movieReviews.map((review) => {
               return (
                 <li key={review.id}>

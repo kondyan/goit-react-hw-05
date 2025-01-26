@@ -39,8 +39,12 @@ const MovieCast = () => {
                   <div className={css.card}>
                     <div>
                       <img
-                        src={`https://image.tmdb.org/t/p/w185${castM.profile_path}`}
-                        alt={`Photo of ${castM.name} is not found`}
+                        src={
+                          castM.profile_path
+                            ? `https://image.tmdb.org/t/p/w185${castM.profile_path}`
+                            : "No Picture found"
+                        }
+                        alt={`Photo of ${castM.name}`}
                       />
                     </div>
                     <div>{`Name: ${castM.name}`}</div>

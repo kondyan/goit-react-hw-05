@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import css from "./MovieDetailsPage.module.css";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../api/api";
 
 const MovieDetailsPage = () => {
@@ -8,13 +8,14 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movieDetails, setMovieDetails] = useState([]);
+  const location = useLocation();
+  const backLink = useRef(location.state);
   useEffect(() => {
     const fetchDetails = async () => {
       try {
         setLoading(true);
         setError(false);
         const response = await fetchMovieDetails(movieId);
-        console.log(response);
         setMovieDetails(response);
       } catch (error) {
         setError(true);
@@ -27,16 +28,22 @@ const MovieDetailsPage = () => {
     // }
     fetchDetails();
   }, []);
-
   return (
     <>
-      <p>Movie Detail Page</p>
-      <p>{movieId}</p>
+      <button>
+        <Link to={backLink.current ? backLink.current : "/movies"}>
+          Go back
+        </Link>
+      </button>
 
       <div>
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w342${movieDetails.poster_path}`}
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}`
+                : "no poster found"
+            }
             alt={`Movie Poster of ${movieDetails.original_title}`}
           />
         </div>

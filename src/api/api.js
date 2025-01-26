@@ -4,15 +4,11 @@ axios.defaults.headers = {
   Authorization: `Bearer ${import.meta.env.VITE_API_ACCESS_KEY}`,
 };
 
-const params = {};
-
 export async function fetchTrendingMovies() {
   try {
     // params.query = query;
     // params.page = page;
-    const response = await axios.get("3/trending/movie/day?language=en-US", {
-      params,
-    });
+    const response = await axios.get("3/trending/movie/day?language=en-US");
     return response.data.results;
   } catch (error) {
     console.log(error.message);
@@ -21,11 +17,7 @@ export async function fetchTrendingMovies() {
 
 export async function fetchMovieDetails(id) {
   try {
-    // params.query = query;
-    // params.page = page;
-    const response = await axios.get(`3/movie/${id}`, {
-      params,
-    });
+    const response = await axios.get(`3/movie/${id}`);
 
     return response.data;
   } catch (error) {
@@ -35,11 +27,7 @@ export async function fetchMovieDetails(id) {
 
 export async function fetchMovieCast(id) {
   try {
-    // params.query = query;
-    // params.page = page;
-    const response = await axios.get(`3/movie/${id}/credits`, {
-      params,
-    });
+    const response = await axios.get(`3/movie/${id}/credits`);
 
     return response.data.cast;
   } catch (error) {
@@ -49,11 +37,7 @@ export async function fetchMovieCast(id) {
 
 export async function fetchMovieReviews(id) {
   try {
-    // params.query = query;
-    // params.page = page;
-    const response = await axios.get(`3/movie/${id}/reviews`, {
-      params,
-    });
+    const response = await axios.get(`3/movie/${id}/reviews`);
 
     return response.data.results;
   } catch (error) {

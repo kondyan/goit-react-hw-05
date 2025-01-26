@@ -32,17 +32,24 @@ const MovieCast = () => {
   return (
     <>
       <ul>
-        {movieCast ?movieCast.map((castM) => {
-          return (
-            <li>
-              <div>
-                <img src={castM.profile_path} alt={`Photo of ${castM.name}`} />
-              </div>
-              <div>{`Name: ${castM.name}`}</div>
-              <div>{`Character: ${castM.character}`}</div>
-            </li>
-          );
-        }) : "We don't have cast list for this movie"}
+        {movieCast
+          ? movieCast.map((castM) => {
+              return (
+                <li key={castM.id}>
+                  <div className={css.card}>
+                    <div>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w185${castM.profile_path}`}
+                        alt={`Photo of ${castM.name} is not found`}
+                      />
+                    </div>
+                    <div>{`Name: ${castM.name}`}</div>
+                    <div>{`Character: ${castM.character}`}</div>
+                  </div>
+                </li>
+              );
+            })
+          : "We don't have cast list for this movie"}
       </ul>
     </>
   );

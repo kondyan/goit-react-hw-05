@@ -1,5 +1,12 @@
+import { NavLink } from "react-router-dom";
 import css from "./MoviesPage.module.css";
 
-const MoviesPage = () => {};
+const MoviesPage = () => {
+  return (
+    <>
+      <p>Movie Page</p>
+    </>
+  );
+};
 
 export default MoviesPage;

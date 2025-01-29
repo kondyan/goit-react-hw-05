@@ -14,7 +14,6 @@ const MovieReviews = () => {
         setLoading(true);
         setError(false);
         const response = await fetchMovieReviews(movieId);
-        console.log(response);
         setMovieCast(response);
       } catch (error) {
         setError(true);

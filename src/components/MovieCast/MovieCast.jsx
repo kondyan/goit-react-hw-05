@@ -16,8 +16,6 @@ const MovieCast = () => {
         setLoading(true);
         setError(false);
         const response = await fetchMovieCast(movieId);
-
-        console.log(response);
         setMovieCast(response);
       } catch (error) {
         setError(true);

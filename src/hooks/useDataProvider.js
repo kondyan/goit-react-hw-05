@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MyContext } from "../providers/homePageDataProvider";
+import { MyContext } from "../providers/HomePageDataProvider";
 
 const useDataProvider = () => {
   const { trendingMovies, loading, error } = useContext(MyContext);

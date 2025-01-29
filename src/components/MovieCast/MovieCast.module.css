@@ -1,0 +1,10 @@
+.image {
+  max-height: 300px;
+}
+.cardList {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 10px;
+}

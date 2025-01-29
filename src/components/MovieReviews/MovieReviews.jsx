@@ -29,7 +29,7 @@ const MovieReviews = () => {
   }, []);
   return (
     <>
-      <ul>
+      <ul className={css.cardList}>
         {movieReviews.length
           ? movieReviews.map((review) => {
               return (

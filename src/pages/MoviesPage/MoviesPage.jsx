@@ -52,15 +52,15 @@ const MoviesPage = () => {
   };
   return (
     <>
-      <p>Movie Page</p>
-      <form onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <input
+          className={css.inputField}
           type="text"
           name="input"
           value={inputValue}
           onChange={handleChange}
         />
-        <button>Search</button>
+        <button className={css.searchBtn}>Search</button>
       </form>
       <MovieList movies={searchedMovies} />
     </>

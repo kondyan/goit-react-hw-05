@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchTrendingMovies } from "../../api/api";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import css from "./HomePage.module.css";
 import MovieList from "../../components/MovieList/MovieList";
+import useDataProvider from "../../hooks/useDataProvider";
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  useEffect(() => {
-    const fetchTrendings = async () => {
-      try {
-        setLoading(true);
-        setError(false);
-        const response = await fetchTrendingMovies();
-
-        setTrendingMovies(response);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    // if (inputValue === "") {
-    //   return;
-    // }
-    fetchTrendings();
-  }, []);
+  const { trendingMovies, loading, error } = useDataProvider();
   return (
     <>
-      <p>Homepage</p>
+      <h1>Trending today</h1>
       <MovieList movies={trendingMovies} />
     </>
   );

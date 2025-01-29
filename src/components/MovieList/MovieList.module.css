@@ -1,0 +1,11 @@
+.gallery {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style: circle;
+}
+
+.movie {
+  text-decoration: none;
+  color: blue;
+}

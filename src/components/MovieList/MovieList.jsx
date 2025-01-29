@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import css from "./MovieList.module.css";
 
 const MovieList = ({ movies }) => {
@@ -8,9 +8,13 @@ const MovieList = ({ movies }) => {
     <ul className={css.gallery}>
       {movies?.map((movie) => (
         <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={backPath}>
+          <NavLink
+            className={css.movie}
+            to={`/movies/${movie.id}`}
+            state={backPath}
+          >
             {movie.original_title}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

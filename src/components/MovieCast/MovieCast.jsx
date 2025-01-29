@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import css from "./MovieCast.module.css";
 import { useEffect, useState } from "react";
 import { fetchMovieCast } from "../../api/api";
+import { MdOutlineNoPhotography } from "react-icons/md";
 
 const MovieCast = () => {
   const { movieId } = useParams();
@@ -31,7 +32,7 @@ const MovieCast = () => {
   }, []);
   return (
     <>
-      <ul>
+      <ul className={css.cardList}>
         {movieCast
           ? movieCast.map((castM) => {
               return (
@@ -39,12 +40,13 @@ const MovieCast = () => {
                   <div className={css.card}>
                     <div>
                       <img
+                        className={css.image}
                         src={
                           castM.profile_path
                             ? `https://image.tmdb.org/t/p/w185${castM.profile_path}`
-                            : "No Picture found"
+                            : "no picture found"
                         }
-                        alt={`Photo of ${castM.name}`}
+                        alt="no picture found"
                       />
                     </div>
                     <div>{`Name: ${castM.name}`}</div>

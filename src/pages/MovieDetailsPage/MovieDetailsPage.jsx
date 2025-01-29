@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import css from "./MovieDetailsPage.module.css";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../api/api";
 
 const MovieDetailsPage = () => {
@@ -30,15 +37,20 @@ const MovieDetailsPage = () => {
   }, []);
   return (
     <>
-      <button>
-        <Link to={backLink.current ? backLink.current : "/movies"}>
+      <button className={css.goBackBtn}>
+        <IoIosArrowRoundBack color="black" />
+        <NavLink
+          className={css.goBackBtnLink}
+          to={backLink.current ? backLink.current : "/movies"}
+        >
           Go back
-        </Link>
+        </NavLink>
       </button>
 
-      <div>
+      <div className={css.movieCard}>
         <div>
           <img
+            className={css.poster}
             src={
               movieDetails.poster_path
                 ? `https://image.tmdb.org/t/p/w342${movieDetails.poster_path}`
@@ -47,33 +59,40 @@ const MovieDetailsPage = () => {
             alt={`Movie Poster of ${movieDetails.original_title}`}
           />
         </div>
-        <div>
-          <h2>{movieDetails.original_title}</h2>
-          <p>{`Popularity: ${movieDetails.popularity}`}</p>
-        </div>
-        <div>
-          <h2>Overview</h2>
-          <p>{movieDetails.overview}</p>
-        </div>
-        <div>
-          <h2>Genres</h2>
-          <p>
-            {movieDetails.genres
-              ? movieDetails.genres.map((genre) => genre.name)
-              : "NO GENRES FOUND"}
-          </p>
+        <div className={css.mainInfoWrapper}>
+          <div>
+            <h2>{movieDetails.original_title}</h2>
+            <p>{`Popularity: ${movieDetails.popularity}`}</p>
+          </div>
+          <div>
+            <h2>Overview</h2>
+            <p>{movieDetails.overview}</p>
+          </div>
+          <div>
+            <h2>Genres</h2>
+            <p>
+              {movieDetails.genres
+                ? movieDetails.genres.map((genre) => genre.name + " ")
+                : "no genres found"}
+            </p>
+          </div>
         </div>
       </div>
-      <h3>Additional Information</h3>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-
+      <div className={css.addInfo}>
+        <h2>Additional Information</h2>
+        <ul>
+          <li>
+            <Link className={css.addInfoLink} to="cast">
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link className={css.addInfoLink} to="reviews">
+              Reviews
+            </Link>
+          </li>
+        </ul>
+      </div>
       <Outlet />
     </>
   );

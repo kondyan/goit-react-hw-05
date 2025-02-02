@@ -11,6 +11,10 @@
   gap: 30px;
 }
 
+.poster {
+  max-width: max-content;
+}
+
 .goBackBtn {
   display: flex;
   align-items: center;
